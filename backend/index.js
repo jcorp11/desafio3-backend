@@ -21,6 +21,19 @@ app.post("/posts", async (req, res) => {
   await postModel.create(post);
   return res.status(201).json(post);
 });
+
+app.put("/posts/like/:id", async (req, res) => {
+  const id = req.params.id;
+  const post = await postModel.like(id);
+  return res.status(200).json(post);
+});
+
+app.delete("/posts/:id", async (req, res) => {
+  const id = req.params.id;
+  const post = await postModel.remove(id);
+  return res.status(200).json(post);
+});
+
 app.listen(PORT, () => {
   console.log(`Desafio 3 backend app listening on port ${PORT}`);
 });
