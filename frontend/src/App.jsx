@@ -15,7 +15,7 @@ function App() {
   const [posts, setPosts] = useState([]);
 
   const getPosts = async () => {
-    console.log(urlBaseServer + "/posts");
+    // console.log(urlBaseServer + "/posts");
     const { data: posts } = await axios.get(urlBaseServer + "/posts");
     setPosts([...posts]);
   };
