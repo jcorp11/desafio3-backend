@@ -1,7 +1,7 @@
 import { pool } from "../database/conection.js";
 
 const findAll = async () => {
-  const query = "SELECT * FROM posts";
+  const query = "SELECT * FROM posts ORDER BY id ASC";
   const { rows } = await pool.query(query);
   return rows;
 };
