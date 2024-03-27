@@ -20,7 +20,7 @@ router.post("/", async (req, res) => {
   }
   const newPost = { titulo, img, descripcion };
   try {
-    await postModel.create(newPost);
+    const post = await postModel.create(newPost);
     return res.status(201).json(post);
   } catch (error) {
     return res.status(500).json({ message: error.message });
