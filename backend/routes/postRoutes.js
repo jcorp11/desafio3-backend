@@ -5,7 +5,9 @@ const router = express.Router();
 
 router.get("/", async (req, res) => {
   try {
+    console.log("iniciando get");
     const posts = await postModel.findAll();
+    console.log("terminando get");
     return res.status(200).json(posts);
   } catch (error) {
     return res.status(500).json({ message: error.message });
@@ -14,11 +16,11 @@ router.get("/", async (req, res) => {
 
 router.post("/", async (req, res) => {
   //   console.log(req.body);
-  const { titulo, img, descripcion } = req.body;
-  if (!titulo || !img) {
+  const { titulo, url, descripcion } = req.body;
+  if (!titulo || !url) {
     return res.status(400).json({ message: "Missing data" });
   }
-  const newPost = { titulo, img, descripcion };
+  const newPost = { titulo, img: url, descripcion };
   try {
     const post = await postModel.create(newPost);
     return res.status(201).json(post);

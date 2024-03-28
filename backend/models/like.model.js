@@ -1,6 +1,8 @@
 import { pool } from "../database/conection.js";
 
 const findAll = async () => {
+  console.log("obteniendo posts");
+
   const query = "SELECT * FROM posts ORDER BY id ASC";
   const { rows } = await pool.query(query);
   return rows;
